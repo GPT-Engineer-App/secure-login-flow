@@ -24,7 +24,7 @@ const Index = () => {
         Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZkbmhqeG1zdXlraHZobnZqdXBpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDk4MjIyNjUsImV4cCI6MjAyNTM5ODI2NX0.byaihexABIEbRtnd1-n8R33kkt4lIwcB1xsX6P6PUA8",
       },
       body: JSON.stringify({
-        email: email,
+        email: email.trim(),
         password: password,
       }),
     });
@@ -80,7 +80,9 @@ const Index = () => {
           <Text fontSize="xl">Login</Text>
           <Input placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
           <Input placeholder="Password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-          <Button onClick={handleLogin}>Login</Button>
+          <Button onClick={handleLogin} isDisabled={!email || !password}>
+            Login
+          </Button>
         </VStack>
       </Box>
     </Container>
